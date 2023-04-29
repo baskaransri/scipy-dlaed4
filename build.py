@@ -8,9 +8,9 @@ import numpy
 
 ext_modules = [
     Extension(
-        "LAPACK_extra",
+        "scipy_dlaed4",
         include_dirs=[numpy.get_include()],
-        sources=["lapack_extra/LAPACK_extra.pyx"],
+        sources=["scipy_dlaed4/scipy_dlaed4.pyx"],
     ),
 ]
 

@@ -1,11 +1,8 @@
 [tool.poetry]
-name = "lapack-extra"
+name = "scipy-dlaed4"
 version = "0.1.0"
 description = ""
 authors = ["Baskaran Sripathmanathan <baskaran@robots.ox.ac.uk>"]
-#packages = [
-#         { include = "lapack-extra" }
-#]
 
 [tool.poetry.dependencies]
 python = ">=3.9, <3.12"
