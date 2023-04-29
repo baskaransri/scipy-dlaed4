@@ -13,7 +13,7 @@
       let
         # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
         inherit (poetry2nix.legacyPackages.${system})
-          mkPoetryEnv mkPoetryApp defaultPoetryOverrides overrides;
+          mkPoetryEnv mkPoetryPackages defaultPoetryOverrides overrides;
         # import some helper functions
         inherit (nixpkgs.lib.attrsets) genAttrs getAttrs;
         pkgs = nixpkgs.legacyPackages.${system};
@@ -31,26 +31,24 @@
              llvmlite = pkgs.python310Packages.llvmlite;
            };
         */
-        allOverrides = [
-          defaultPoetryOverrides
-          # customOverrides
-        ];
         devEnv = mkPoetryEnv {
           projectDir = self;
           preferWheels = true;
-          overrides = allOverrides;
+          # overrides = [ defaultPoetryOverrides customOverrides ];
           python = pkgs.python310;
         };
-        myapp = mkPoetryApp {
+        myPkg = mkPoetryPackages {
           projectDir = self;
           preferWheels = true;
-          overrides = allOverrides;
+          # overrides = [ defaultPoetryOverrides customOverrides ];
           python = pkgs.python310;
         };
       in {
         defaultPackage = {
-          inherit myapp;
-          default = self.packages.${system}.myapp;
+          inherit myPkg;
+          ${system} = myPkg;
+          # default = self.packages.${system}.myPkg;
+          default = myPkg;
         };
 
         devShells.default = pkgs.mkShell {

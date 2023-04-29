@@ -2,6 +2,7 @@
 from distutils.extension import Extension
 from distutils.command.build_ext import build_ext
 from distutils.errors import DistutilsPlatformError, CCompilerError, DistutilsExecError
+import Cython.Build
 import numpy
 
 
@@ -9,7 +10,7 @@ ext_modules = [
     Extension(
         "LAPACK_extra",
         include_dirs=[numpy.get_include()],
-        sources=["LAPACK_extra.pyx"],
+        sources=["lapack_extra/LAPACK_extra.pyx"],
     ),
 ]
 
@@ -39,7 +40,8 @@ def build(setup_kwargs):
     setup_kwargs.update(
         {
             "ext_modules": ext_modules,
-            "cmdclass": {"build_ext": ExtBuilder},
+            # "cmdclass": {"build_ext": ExtBuilder},
+            "cmdclass": {"build_ext": Cython.Build.build_ext},
             "zip_safe": False,
         }
     )
