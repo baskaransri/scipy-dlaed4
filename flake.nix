@@ -48,7 +48,7 @@
           python = pkgs.python310;
         };
       in {
-        packages = {
+        defaultPackage = {
           inherit myapp;
           default = self.packages.${system}.myapp;
         };
