@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
-import scipy_dlaed4 as sd
+import scipy_dlaed4.scipy_dlaed4_interface as sd
 
 # Assumes D is sorted!
 def dlaed4(D, Z, rho, idx=1):

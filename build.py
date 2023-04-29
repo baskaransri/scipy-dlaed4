@@ -8,9 +8,9 @@ import numpy
 
 ext_modules = [
     Extension(
-        "scipy_dlaed4",
+        "scipy_dlaed4.scipy_dlaed4_interface",
         include_dirs=[numpy.get_include()],
-        sources=["scipy_dlaed4/scipy_dlaed4.pyx"],
+        sources=["scipy_dlaed4/scipy_dlaed4_interface.pyx"],
     ),
 ]
 
@@ -40,6 +40,7 @@ def build(setup_kwargs):
     setup_kwargs.update(
         {
             "ext_modules": ext_modules,
+            #"ext_modules": Cython.Build.cythonize(ext_modules),
             # "cmdclass": {"build_ext": ExtBuilder},
             "cmdclass": {"build_ext": Cython.Build.build_ext},
             "zip_safe": False,
