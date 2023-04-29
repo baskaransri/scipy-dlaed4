@@ -24,12 +24,12 @@ def dlaed4(D, Z, rho, idx=1):
     N = D.shape[0]
     Delta_out = np.empty(N, dtype=np.float64)
     return sd.dlaed4(
-        n=np.intc(N),
-        i=np.intc(idx),
-        D=D.astype(np.float64),
-        Z=Z.astype(np.float64),
-        rho=np.float64(rho),
-        Delta_out=Delta_out,
+        np.intc(N),
+        np.intc(idx),
+        D.astype(np.float64),
+        Z.astype(np.float64),
+        np.float64(rho),
+        Delta_out,
     )
 
 
@@ -57,10 +57,10 @@ def dlaed4_ex(D, Z, rho, idx=1):
     N = D.shape[0]
     Delta_out = np.empty(N, dtype=np.float64)
     return sd.dlaed4_ex(
-        n=np.intc(N),
-        i=np.intc(idx),
-        D=D.astype(np.float64),
-        Z=Z.astype(np.float64),
-        rho=np.float64(rho),
-        Delta_out=Delta_out,
+        np.intc(N),
+        np.intc(idx),
+        D.astype(np.float64),
+        Z.astype(np.float64),
+        np.float64(rho),
+        Delta_out,
     )
